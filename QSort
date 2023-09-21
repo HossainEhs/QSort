@@ -1,0 +1,20 @@
+import locale
+
+
+locale.setlocale(locale.LC_ALL, 'fa_IR.UTF-8')
+
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+    else:
+        pivot = arr[0]
+        less = [x for x in arr[1:] if locale.strcoll(x, pivot) < 0]
+        greater = [x for x in arr[1:] if locale.strcoll(x, pivot) >= 0]
+        return quicksort(less) + [pivot] + quicksort(greater)
+
+
+persian_words = ["سلام", "خداحافظ", "خانه", "آسمان", "زرافه", "کتاب"]
+english_words = ["hello", "goodbye", "house", "sky", "giraffe", "book"]
+sorted_words = quicksort(persian_words)
+sorted_words = quicksort(english_words)
+print(sorted_words)
